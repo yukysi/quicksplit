@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:quicksplit}",
+            "name": "Debug QuickSplit",
+            "target": "QuickSplit",
+            "configuration": "debug",
+            "preLaunchTask": "swift: Build Debug QuickSplit"
+        },
+        {
+            "type": "swift",
+            "request": "launch",
+            "args": [],
+            "cwd": "${workspaceFolder:quicksplit}",
+            "name": "Release QuickSplit",
+            "target": "QuickSplit",
+            "configuration": "release",
+            "preLaunchTask": "swift: Build Release QuickSplit"
+        }
+    ]
+}

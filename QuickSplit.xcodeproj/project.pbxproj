@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09399F17B58D556897B5F6B1 /* AccessibilityGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C247814E0D765DB98528B240 /* AccessibilityGuard.swift */; };
+		1E604DA9CC4179CA8E423224 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E43D1417E645BE921700C81 /* WindowManager.swift */; };
+		3A486B78F67B4431DF00A193 /* ShortcutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D796695F9AE224AB518498 /* ShortcutRowView.swift */; };
+		580D2DD48EA765BD19C45707 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */; };
+		605A07DB4F0E76FEAD3584BC /* WindowLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9218F9E67E0F5488C59F64B /* WindowLayoutCalculator.swift */; };
+		766970B0838FA1A8B552CAE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDFE669E0F5E03A8260B54F /* SettingsView.swift */; };
+		790C20303C1B6AFC31CC63DE /* QuickSplitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466AD0A7251792FB68E5B97 /* QuickSplitApp.swift */; };
+		888B6E180E924D37C31900B4 /* ShortcutRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7C24F57260D7A773FC423D /* ShortcutRegistry.swift */; };
+		8DDF172214ABA16E18502F78 /* WindowAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3332468AA6B9EF2EB5BC22 /* WindowAction.swift */; };
+		B13094A0307301D9CBBA6E0E /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = 51C8F10E12798034CBE75DB3 /* KeyboardShortcuts */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0466AD0A7251792FB68E5B97 /* QuickSplitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSplitApp.swift; sourceTree = "<group>"; };
+		2C3332468AA6B9EF2EB5BC22 /* WindowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAction.swift; sourceTree = "<group>"; };
+		3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPopoverView.swift; sourceTree = "<group>"; };
+		52AE1DA68F6E8244E71B9B27 /* QuickSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E43D1417E645BE921700C81 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
+		60D796695F9AE224AB518498 /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
+		6B7C24F57260D7A773FC423D /* ShortcutRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRegistry.swift; sourceTree = "<group>"; };
+		C247814E0D765DB98528B240 /* AccessibilityGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityGuard.swift; sourceTree = "<group>"; };
+		DEDFE669E0F5E03A8260B54F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F9218F9E67E0F5488C59F64B /* WindowLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowLayoutCalculator.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19FD324B38689BC5511494A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B13094A0307301D9CBBA6E0E /* KeyboardShortcuts in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B06DE8D73E22029DEABB5C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */,
+				DEDFE669E0F5E03A8260B54F /* SettingsView.swift */,
+				60D796695F9AE224AB518498 /* ShortcutRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FABF9ECBEB94395DD8E6FC6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E396072DE164543737846C61 /* QuickSplit */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		9403E0A078455A4092C7D184 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C247814E0D765DB98528B240 /* AccessibilityGuard.swift */,
+				6B7C24F57260D7A773FC423D /* ShortcutRegistry.swift */,
+				2C3332468AA6B9EF2EB5BC22 /* WindowAction.swift */,
+				F9218F9E67E0F5488C59F64B /* WindowLayoutCalculator.swift */,
+				5E43D1417E645BE921700C81 /* WindowManager.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		E396072DE164543737846C61 /* QuickSplit */ = {
+			isa = PBXGroup;
+			children = (
+				0466AD0A7251792FB68E5B97 /* QuickSplitApp.swift */,
+				9403E0A078455A4092C7D184 /* Core */,
+				3B06DE8D73E22029DEABB5C6 /* Views */,
+			);
+			path = QuickSplit;
+			sourceTree = "<group>";
+		};
+		EA21F193A63982988861B64A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52AE1DA68F6E8244E71B9B27 /* QuickSplit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F87BFDF27A853674DD42BBCA = {
+			isa = PBXGroup;
+			children = (
+				7FABF9ECBEB94395DD8E6FC6 /* Sources */,
+				EA21F193A63982988861B64A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1B31311C836D686F2B3344DD /* QuickSplit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55D0079B879318BB70D582DD /* Build configuration list for PBXNativeTarget "QuickSplit" */;
+			buildPhases = (
+				1D83D0D8AB41617DDBAAD913 /* Sources */,
+				19FD324B38689BC5511494A5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickSplit;
+			packageProductDependencies = (
+				51C8F10E12798034CBE75DB3 /* KeyboardShortcuts */,
+			);
+			productName = QuickSplit;
+			productReference = 52AE1DA68F6E8244E71B9B27 /* QuickSplit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19F6E9D5CC26A30995276674 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					1B31311C836D686F2B3344DD = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = CF11ED86424DF0FA631A86D7 /* Build configuration list for PBXProject "QuickSplit" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F87BFDF27A853674DD42BBCA;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F29FCA80AF2569E1139EA21D /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = EA21F193A63982988861B64A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1B31311C836D686F2B3344DD /* QuickSplit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D83D0D8AB41617DDBAAD913 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09399F17B58D556897B5F6B1 /* AccessibilityGuard.swift in Sources */,
+				580D2DD48EA765BD19C45707 /* MenuBarPopoverView.swift in Sources */,
+				790C20303C1B6AFC31CC63DE /* QuickSplitApp.swift in Sources */,
+				766970B0838FA1A8B552CAE5 /* SettingsView.swift in Sources */,
+				888B6E180E924D37C31900B4 /* ShortcutRegistry.swift in Sources */,
+				3A486B78F67B4431DF00A193 /* ShortcutRowView.swift in Sources */,
+				8DDF172214ABA16E18502F78 /* WindowAction.swift in Sources */,
+				605A07DB4F0E76FEAD3584BC /* WindowLayoutCalculator.swift in Sources */,
+				1E604DA9CC4179CA8E423224 /* WindowManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		19EDAA319B56CDDA48D9731C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		7E958864A5787D258F280024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = Generated/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yukiyasui.quicksplit;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "";
+			};
+			name = Debug;
+		};
+		C0C26AA02544EF46F53A0E9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EE3506D61DBF13172E578743 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				INFOPLIST_FILE = Generated/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yukiyasui.quicksplit;
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_VERSION = 5.10;
+				TARGETED_DEVICE_FAMILY = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		55D0079B879318BB70D582DD /* Build configuration list for PBXNativeTarget "QuickSplit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7E958864A5787D258F280024 /* Debug */,
+				EE3506D61DBF13172E578743 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CF11ED86424DF0FA631A86D7 /* Build configuration list for PBXProject "QuickSplit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19EDAA319B56CDDA48D9731C /* Debug */,
+				C0C26AA02544EF46F53A0E9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F29FCA80AF2569E1139EA21D /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		51C8F10E12798034CBE75DB3 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F29FCA80AF2569E1139EA21D /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 19F6E9D5CC26A30995276674 /* Project object */;
+}

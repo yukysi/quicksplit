@@ -1,0 +1,45 @@
+name: QuickSplit
+options:
+  bundleIdPrefix: com.yukiyasui
+  createIntermediateGroups: true
+  deploymentTarget:
+    macOS: "14.0"
+
+packages:
+  KeyboardShortcuts:
+    url: https://github.com/sindresorhus/KeyboardShortcuts
+    from: 2.2.0
+
+targets:
+  QuickSplit:
+    type: application
+    platform: macOS
+    supportedDestinations: [macOS]
+    deploymentTarget: "14.0"
+    sources:
+      - path: Sources/QuickSplit
+    dependencies:
+      - package: KeyboardShortcuts
+    info:
+      path: Generated/Info.plist
+      properties:
+        CFBundleDisplayName: QuickSplit
+        LSUIElement: true
+        LSMinimumSystemVersion: "14.0"
+        NSHighResolutionCapable: true
+        CFBundleDevelopmentRegion: ja
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.yukiyasui.quicksplit
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        SWIFT_VERSION: "5.10"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: "-"
+        DEVELOPMENT_TEAM: ""
+        ENABLE_HARDENED_RUNTIME: YES
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+        SUPPORTED_PLATFORMS: "macosx"
+        SUPPORTS_MACCATALYST: NO
+        ASSETCATALOG_COMPILER_APPICON_NAME: ""
