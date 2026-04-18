@@ -28,19 +28,6 @@ open dist/QuickSplit.app
 
 `dist/QuickSplit.app` を `~/Applications` 等へコピーすれば常用できます。
 
-## 初回起動時の警告解除（無料配布の制約）
-
-このアプリは Apple Developer ID で署名されていません（年 $99 の Apple Developer Program 未加入）。そのため初回起動時に「開発元を検証できません」警告が出ます。以下のいずれかで解除してください。
-
-**方法 A（推奨）**: Finder でアプリアイコンを右クリック → **開く** → 「開く」ボタンで承認
-
-**方法 B**: System Settings → **プライバシーとセキュリティ** → 下部の「"QuickSplit" は…ブロックされました」の横の **このまま開く**
-
-**方法 C（CLI）**: Gatekeeper の quarantine 属性を外す
-```bash
-xattr -dr com.apple.quarantine /Applications/QuickSplit.app
-```
-
 ## Accessibility 権限の付与
 
 ウィンドウを操作するため、macOS の Accessibility API への許可が必要です。
