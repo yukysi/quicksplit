@@ -21,6 +21,12 @@ struct QuickSplitApp: App {
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        #if DEBUG
+        if ScreenshotRenderer.runIfRequested() {
+            NSApp.terminate(nil)
+            return
+        }
+        #endif
         NSApp.setActivationPolicy(.accessory)
         Task { @MainActor in
             ShortcutRegistry.registerAll()
