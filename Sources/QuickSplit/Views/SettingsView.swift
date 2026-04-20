@@ -38,6 +38,16 @@ struct SettingsView: View {
                     Button("設定を開く") { guard_.openSystemSettings() }
                 }
             }
+            Section {
+                HStack {
+                    Spacer()
+                    Button(role: .destructive) {
+                        NSApp.terminate(nil)
+                    } label: {
+                        Label("QuickSplit を終了", systemImage: "power")
+                    }
+                }
+            }
         }
         .formStyle(.grouped)
     }

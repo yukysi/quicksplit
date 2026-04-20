@@ -10,7 +10,6 @@
 		09399F17B58D556897B5F6B1 /* AccessibilityGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C247814E0D765DB98528B240 /* AccessibilityGuard.swift */; };
 		1E604DA9CC4179CA8E423224 /* WindowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E43D1417E645BE921700C81 /* WindowManager.swift */; };
 		3A486B78F67B4431DF00A193 /* ShortcutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D796695F9AE224AB518498 /* ShortcutRowView.swift */; };
-		580D2DD48EA765BD19C45707 /* MenuBarPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */; };
 		605A07DB4F0E76FEAD3584BC /* WindowLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9218F9E67E0F5488C59F64B /* WindowLayoutCalculator.swift */; };
 		766970B0838FA1A8B552CAE5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDFE669E0F5E03A8260B54F /* SettingsView.swift */; };
 		790C20303C1B6AFC31CC63DE /* QuickSplitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466AD0A7251792FB68E5B97 /* QuickSplitApp.swift */; };
@@ -22,7 +21,6 @@
 /* Begin PBXFileReference section */
 		0466AD0A7251792FB68E5B97 /* QuickSplitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickSplitApp.swift; sourceTree = "<group>"; };
 		2C3332468AA6B9EF2EB5BC22 /* WindowAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowAction.swift; sourceTree = "<group>"; };
-		3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarPopoverView.swift; sourceTree = "<group>"; };
 		52AE1DA68F6E8244E71B9B27 /* QuickSplit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickSplit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E43D1417E645BE921700C81 /* WindowManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowManager.swift; sourceTree = "<group>"; };
 		60D796695F9AE224AB518498 /* ShortcutRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutRowView.swift; sourceTree = "<group>"; };
@@ -47,7 +45,6 @@
 		3B06DE8D73E22029DEABB5C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3A910C652762CE602F49F4DF /* MenuBarPopoverView.swift */,
 				DEDFE669E0F5E03A8260B54F /* SettingsView.swift */,
 				60D796695F9AE224AB518498 /* ShortcutRowView.swift */,
 			);
@@ -165,7 +162,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				09399F17B58D556897B5F6B1 /* AccessibilityGuard.swift in Sources */,
-				580D2DD48EA765BD19C45707 /* MenuBarPopoverView.swift in Sources */,
 				790C20303C1B6AFC31CC63DE /* QuickSplitApp.swift in Sources */,
 				766970B0838FA1A8B552CAE5 /* SettingsView.swift in Sources */,
 				888B6E180E924D37C31900B4 /* ShortcutRegistry.swift in Sources */,
