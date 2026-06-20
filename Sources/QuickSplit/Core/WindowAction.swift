@@ -7,6 +7,7 @@ enum WindowAction: String, CaseIterable, Identifiable, Sendable {
     case center
     case maximize, almostMaximize
     case restore
+    case firstFourth, secondFourth, thirdFourth, lastFourth
 
     var id: String { rawValue }
 
@@ -27,6 +28,10 @@ enum WindowAction: String, CaseIterable, Identifiable, Sendable {
         case .maximize: return "最大化"
         case .almostMaximize: return "ほぼ最大化 (90%)"
         case .restore: return "元に戻す"
+        case .firstFourth: return "左 1/4"
+        case .secondFourth: return "中左 1/4"
+        case .thirdFourth: return "中右 1/4"
+        case .lastFourth: return "右 1/4"
         }
     }
 
@@ -41,6 +46,7 @@ enum WindowAction: String, CaseIterable, Identifiable, Sendable {
         case .bottomLeft: return "rectangle.inset.bottomleft.filled"
         case .bottomRight: return "rectangle.inset.bottomright.filled"
         case .firstThird, .centerThird, .lastThird: return "rectangle.split.3x1"
+        case .firstFourth, .secondFourth, .thirdFourth, .lastFourth: return "rectangle.split.4x1"
         case .center: return "rectangle.center.inset.filled"
         case .maximize: return "rectangle.inset.filled"
         case .almostMaximize: return "rectangle.dashed"
@@ -52,6 +58,7 @@ enum WindowAction: String, CaseIterable, Identifiable, Sendable {
         ("ハーフ", [.leftHalf, .rightHalf, .topHalf, .bottomHalf]),
         ("クォーター", [.topLeft, .topRight, .bottomLeft, .bottomRight]),
         ("サード", [.firstThird, .centerThird, .lastThird]),
+        ("フォース", [.firstFourth, .secondFourth, .thirdFourth, .lastFourth]),
         ("その他", [.center, .maximize, .almostMaximize, .restore])
     ]
 }

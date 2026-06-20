@@ -30,6 +30,14 @@ enum WindowLayoutCalculator {
             return CGRect(x: x + w / 3, y: y, width: w / 3, height: h)
         case .lastThird:
             return CGRect(x: x + w * 2 / 3, y: y, width: w / 3, height: h)
+        case .firstFourth:
+            return CGRect(x: x, y: y, width: w / 4, height: h)
+        case .secondFourth:
+            return CGRect(x: x + w / 4, y: y, width: w / 4, height: h)
+        case .thirdFourth:
+            return CGRect(x: x + w / 2, y: y, width: w / 4, height: h)
+        case .lastFourth:
+            return CGRect(x: x + w * 3 / 4, y: y, width: w / 4, height: h)
         case .maximize:
             return CGRect(x: x, y: y, width: w, height: h)
         case .almostMaximize:

@@ -16,6 +16,10 @@ extension KeyboardShortcuts.Name {
     static let maximize = Self("maximize")
     static let almostMaximize = Self("almostMaximize")
     static let restore = Self("restore")
+    static let firstFourth = Self("firstFourth")
+    static let secondFourth = Self("secondFourth")
+    static let thirdFourth = Self("thirdFourth")
+    static let lastFourth = Self("lastFourth")
 }
 
 extension WindowAction {
@@ -36,6 +40,10 @@ extension WindowAction {
         case .maximize: return .maximize
         case .almostMaximize: return .almostMaximize
         case .restore: return .restore
+        case .firstFourth: return .firstFourth
+        case .secondFourth: return .secondFourth
+        case .thirdFourth: return .thirdFourth
+        case .lastFourth: return .lastFourth
         }
     }
 }
