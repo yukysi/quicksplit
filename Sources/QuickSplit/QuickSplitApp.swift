@@ -1,5 +1,6 @@
 import SwiftUI
 import AppKit
+import Sparkle
 
 @main
 struct QuickSplitApp: App {
@@ -15,8 +16,10 @@ struct QuickSplitApp: App {
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItem: NSStatusItem?
     private var settingsWindowController: NSWindowController?
+    private var updaterController: SPUStandardUpdaterController?
 
     func applicationDidFinishLaunching(_ notification: Notification) {
+        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
         #if DEBUG
         if ScreenshotRenderer.runIfRequested() {
             NSApp.terminate(nil)
@@ -51,7 +54,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func showSettings() {
         if settingsWindowController == nil {
-            let hosting = NSHostingController(rootView: SettingsView())
+            let hosting = NSHostingController(rootView: SettingsView(checkForUpdates: { [weak self] in
+                self?.updaterController?.checkForUpdates(nil)
+            }))
             let window = NSWindow(contentViewController: hosting)
             window.title = "QuickSplit"
             window.styleMask = [.titled, .closable, .miniaturizable]

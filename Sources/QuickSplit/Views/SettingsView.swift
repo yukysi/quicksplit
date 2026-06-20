@@ -2,6 +2,7 @@ import SwiftUI
 import ServiceManagement
 
 struct SettingsView: View {
+    var checkForUpdates: (() -> Void)? = nil
     @ObservedObject private var guard_ = AccessibilityGuard.shared
     @State private var launchAtLogin: Bool = false
 
@@ -28,6 +29,11 @@ struct SettingsView: View {
                     .onChange(of: launchAtLogin) { _, newValue in
                         toggleLaunchAtLogin(newValue)
                     }
+            }
+            Section {
+                Button("アップデートを確認") {
+                    checkForUpdates?()
+                }
             }
             Section("アクセス権") {
                 HStack {
