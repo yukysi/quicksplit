@@ -1,22 +1,37 @@
 import AppKit
 import ApplicationServices
+import os
 
 @MainActor
 final class WindowManager {
     static let shared = WindowManager()
 
+    private let logger = Logger(subsystem: "com.yukiyasui.quicksplit", category: "WindowManager")
     private var frameHistory: [CGRect] = []
     private let historyLimit = 20
 
     private init() {}
 
     func perform(_ action: WindowAction) {
+        if !AccessibilityGuard.shared.isTrusted {
+            AccessibilityGuard.shared.refresh()
+            if !AccessibilityGuard.shared.isTrusted {
+                AccessibilityGuard.shared.requestTrust()
+                logger.warning("Accessibility permission is not granted; requested trust prompt.")
+                return
+            }
+        }
+
         guard let app = NSWorkspace.shared.frontmostApplication else { return }
         let appElement = AXUIElementCreateApplication(app.processIdentifier)
 
         var windowRef: CFTypeRef?
         let err = AXUIElementCopyAttributeValue(appElement, kAXFocusedWindowAttribute as CFString, &windowRef)
-        guard err == .success, let unwrapped = windowRef else { return }
+        guard err == .success else {
+            logger.error("Failed to copy focused window attribute: \(err.rawValue)")
+            return
+        }
+        guard let unwrapped = windowRef else { return }
         let window = unwrapped as! AXUIElement
 
         guard let currentFrame = frame(of: window) else { return }
@@ -56,9 +71,19 @@ final class WindowManager {
     private func frame(of window: AXUIElement) -> CGRect? {
         var posRef: CFTypeRef?
         var sizeRef: CFTypeRef?
-        guard AXUIElementCopyAttributeValue(window, kAXPositionAttribute as CFString, &posRef) == .success,
-              AXUIElementCopyAttributeValue(window, kAXSizeAttribute as CFString, &sizeRef) == .success,
-              let posRef, let sizeRef else { return nil }
+        let positionErr = AXUIElementCopyAttributeValue(window, kAXPositionAttribute as CFString, &posRef)
+        guard positionErr == .success else {
+            logger.error("Failed to copy window position attribute: \(positionErr.rawValue)")
+            return nil
+        }
+
+        let sizeErr = AXUIElementCopyAttributeValue(window, kAXSizeAttribute as CFString, &sizeRef)
+        guard sizeErr == .success else {
+            logger.error("Failed to copy window size attribute: \(sizeErr.rawValue)")
+            return nil
+        }
+
+        guard let posRef, let sizeRef else { return nil }
 
         var position = CGPoint.zero
         var size = CGSize.zero
@@ -71,13 +96,24 @@ final class WindowManager {
         var position = frame.origin
         var size = frame.size
         if let posValue = AXValueCreate(.cgPoint, &position) {
-            AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, posValue)
+            let err = AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, posValue)
+            if err != .success {
+                logger.error("Failed to set initial window position: \(err.rawValue)")
+            }
         }
         if let sizeValue = AXValueCreate(.cgSize, &size) {
-            AXUIElementSetAttributeValue(window, kAXSizeAttribute as CFString, sizeValue)
+            let err = AXUIElementSetAttributeValue(window, kAXSizeAttribute as CFString, sizeValue)
+            if err != .success {
+                logger.error("Failed to set window size: \(err.rawValue)")
+            }
         }
+        // 一部アプリはリサイズ時に位置をクランプするため、
+        // サイズ確定後に同じ位置を再適用して狙った着地点へ戻す。
         if let posValue = AXValueCreate(.cgPoint, &position) {
-            AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, posValue)
+            let err = AXUIElementSetAttributeValue(window, kAXPositionAttribute as CFString, posValue)
+            if err != .success {
+                logger.error("Failed to set final window position: \(err.rawValue)")
+            }
         }
     }
 
