@@ -37,8 +37,19 @@ cp "$BIN_PATH" "$APP_DIR/Contents/MacOS/$APP_NAME"
 cp "$ROOT/Resources/Info.plist" "$APP_DIR/Contents/Info.plist"
 cp -R "$FW_SRC" "$APP_DIR/Contents/Frameworks/"
 
+VERSION_TAG="$(git -C "$ROOT" describe --tags --abbrev=0 2>/dev/null || true)"
+MARKETING_VERSION="${VERSION_TAG#v}"
+if [[ -n "$MARKETING_VERSION" ]]; then
+    /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString $MARKETING_VERSION" "$APP_DIR/Contents/Info.plist"
+    echo "==> version: $MARKETING_VERSION (from git tag $VERSION_TAG)"
+else
+    echo "warning: git タグが無いため Info.plist の既定バージョンを使用" >&2
+fi
+
 install_name_tool -add_rpath "@executable_path/../Frameworks" "$APP_DIR/Contents/MacOS/$APP_NAME" 2>/dev/null || true
 
+# CFBundleVersion は Sparkle の更新判定キーで、appcast.xml の sparkle:version と
+# 整合させる必要があるため、build.sh では自動化しない。
 # Prefer a stable local signing identity so TCC can keep accessibility grants
 # across rebuilds by matching the certificate-based designated requirement.
 # Match by name across all identities (no -p codesigning): a self-signed local
