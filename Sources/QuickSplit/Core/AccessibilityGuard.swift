@@ -14,7 +14,12 @@ final class AccessibilityGuard: ObservableObject {
     }
 
     func refresh() {
+        let wasTrusted = isTrusted
         isTrusted = AXIsProcessTrusted()
+        if isTrusted, !wasTrusted {
+            // 権限が付与された瞬間に、起動時点で失敗していた EiKanaManager のタップ生成を再試行する
+            EiKanaManager.shared.start()
+        }
     }
 
     func requestTrust() {

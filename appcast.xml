@@ -3,6 +3,18 @@
     <channel>
         <title>QuickSplit</title>
         <item>
+            <title>Version 0.3.1</title>
+            <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
+            <enclosure
+                url="https://github.com/yukysi/quicksplit/releases/download/v0.3.1/QuickSplit-0.3.1-arm64.zip"
+                sparkle:edSignature="PLACEHOLDER_SIGNATURE"
+                length="0"
+                type="application/octet-stream"
+            />
+        </item>
+        <item>
             <title>Version 0.3.0</title>
             <pubDate>Wed, 22 Jul 2026 00:00:00 +0000</pubDate>
             <sparkle:version>3</sparkle:version>
