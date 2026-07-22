@@ -9,8 +9,8 @@
             <sparkle:shortVersionString>0.3.3</sparkle:shortVersionString>
             <enclosure
                 url="https://github.com/yukysi/quicksplit/releases/download/v0.3.3/QuickSplit-0.3.3-arm64.zip"
-                sparkle:edSignature="PLACEHOLDER_SIGNATURE"
-                length="0"
+                sparkle:edSignature="w8XZWRvG/u/nFk2hQej4P71O5jWiLYL7NPuyLXeVjd+EURuN7Pj/a8IOpZrqoEgLVkBinzP7ULely2+DNRRQAg=="
+                length="1400099"
                 type="application/octet-stream"
             />
         </item>
