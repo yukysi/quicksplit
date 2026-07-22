@@ -160,11 +160,22 @@ final class EiKanaManager: ObservableObject {
         self.kanaKeyCode = defaults.object(forKey: DefaultsKey.kanaKeyCode) as? Int ?? KeyCode.rightCommand
     }
 
-    /// 冪等。無効設定 or Accessibility 未許可なら何もしない(既存 tap があれば作り直す前に破棄する)。
+    /// Input Monitoring 権限の許可状態。macOS 10.15 未満では常に true 相当。
+    static var hasInputMonitoringAccess: Bool {
+        CGPreflightListenEventAccess()
+    }
+
+    /// 冪等。無効設定 or 権限未許可なら何もしない(既存 tap があれば作り直す前に破棄する)。
+    /// 参照実装 (dominion525/cmd-eikana) と同様、Accessibility に加えて
+    /// Input Monitoring (macOS 10.15+) も両方揃うまでタップを生成しない。
     func start() {
         stop()
         guard enabled else { return }
         guard AXIsProcessTrusted() else { return }
+        guard Self.hasInputMonitoringAccess else {
+            CGRequestListenEventAccess()
+            return
+        }
 
         let state = EiKanaTapState(eisuKeyCode: Int64(eisuKeyCode), kanaKeyCode: Int64(kanaKeyCode))
         let refcon = Unmanaged.passUnretained(state).toOpaque()
@@ -176,7 +187,7 @@ final class EiKanaManager: ObservableObject {
             | (1 << CGEventType.otherMouseDown.rawValue)
 
         guard let tap = CGEvent.tapCreate(
-            tap: .cghidEventTap,
+            tap: .cgSessionEventTap,
             place: .headInsertEventTap,
             options: .defaultTap,
             eventsOfInterest: mask,

@@ -7,6 +7,7 @@ final class AccessibilityGuard: ObservableObject {
     static let shared = AccessibilityGuard()
 
     @Published private(set) var isTrusted: Bool = false
+    @Published private(set) var hasInputMonitoring: Bool = false
     private var timer: Timer?
 
     private init() {
@@ -14,10 +15,11 @@ final class AccessibilityGuard: ObservableObject {
     }
 
     func refresh() {
-        let wasTrusted = isTrusted
+        let wasBothGranted = isTrusted && hasInputMonitoring
         isTrusted = AXIsProcessTrusted()
-        if isTrusted, !wasTrusted {
-            // 権限が付与された瞬間に、起動時点で失敗していた EiKanaManager のタップ生成を再試行する
+        hasInputMonitoring = EiKanaManager.hasInputMonitoringAccess
+        if isTrusted, hasInputMonitoring, !wasBothGranted {
+            // 両方の権限が揃った瞬間に、起動時点で失敗していた EiKanaManager のタップ生成を再試行する
             EiKanaManager.shared.start()
         }
     }
@@ -26,6 +28,9 @@ final class AccessibilityGuard: ObservableObject {
         let key = "AXTrustedCheckOptionPrompt" as CFString
         let options = [key: true] as CFDictionary
         isTrusted = AXIsProcessTrustedWithOptions(options)
+        if !hasInputMonitoring {
+            CGRequestListenEventAccess()
+        }
         startMonitoring()
     }
 
@@ -38,13 +43,22 @@ final class AccessibilityGuard: ObservableObject {
         NSWorkspace.shared.open(url)
     }
 
+    func openInputMonitoringSettings() {
+        if !hasInputMonitoring {
+            CGRequestListenEventAccess()
+        }
+        let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_ListenEvent")!
+        NSWorkspace.shared.open(url)
+        startMonitoring()
+    }
+
     private func startMonitoring() {
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: true) { [weak self] _ in
             Task { @MainActor in
                 guard let self else { return }
                 self.refresh()
-                if self.isTrusted {
+                if self.isTrusted, self.hasInputMonitoring {
                     self.timer?.invalidate()
                     self.timer = nil
                 }

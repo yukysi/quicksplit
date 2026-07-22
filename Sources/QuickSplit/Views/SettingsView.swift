@@ -97,14 +97,25 @@ struct SettingsView: View {
                     }
                 }
             }
-            if !guard_.isTrusted {
+            if !guard_.isTrusted || !guard_.hasInputMonitoring {
                 Section("アクセス権") {
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle.fill")
-                            .foregroundStyle(.orange)
-                        Text("Accessibility 未許可のため英かな切替が動作しません")
-                        Spacer()
-                        Button("設定を開く") { guard_.openSystemSettings() }
+                    if !guard_.isTrusted {
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.orange)
+                            Text("Accessibility 未許可のため英かな切替が動作しません")
+                            Spacer()
+                            Button("設定を開く") { guard_.openSystemSettings() }
+                        }
+                    }
+                    if !guard_.hasInputMonitoring {
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle.fill")
+                                .foregroundStyle(.orange)
+                            Text("入力監視 (Input Monitoring) 未許可のため英かな切替が動作しません")
+                            Spacer()
+                            Button("設定を開く") { guard_.openInputMonitoringSettings() }
+                        }
                     }
                 }
             }
