@@ -31,6 +31,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         Task { @MainActor in
             ShortcutRegistry.registerAll()
             AccessibilityGuard.shared.refresh()
+            EiKanaManager.shared.start()
         }
     }
 

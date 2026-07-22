@@ -24,6 +24,7 @@ targets:
       path: Generated/Info.plist
       properties:
         CFBundleDisplayName: QuickSplit
+        CFBundleIconFile: AppIcon
         LSUIElement: true
         LSMinimumSystemVersion: "14.0"
         NSHighResolutionCapable: true

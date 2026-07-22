@@ -35,6 +35,11 @@ mkdir -p "$APP_DIR/Contents/Frameworks"
 
 cp "$BIN_PATH" "$APP_DIR/Contents/MacOS/$APP_NAME"
 cp "$ROOT/Resources/Info.plist" "$APP_DIR/Contents/Info.plist"
+if [[ -f "$ROOT/Resources/AppIcon.icns" ]]; then
+    cp "$ROOT/Resources/AppIcon.icns" "$APP_DIR/Contents/Resources/AppIcon.icns"
+else
+    echo "warning: Resources/AppIcon.icns が無いためアイコン未同梱" >&2
+fi
 cp -R "$FW_SRC" "$APP_DIR/Contents/Frameworks/"
 
 VERSION_TAG="$(git -C "$ROOT" describe --tags --abbrev=0 2>/dev/null || true)"

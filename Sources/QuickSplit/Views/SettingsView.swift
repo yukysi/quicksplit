@@ -4,6 +4,7 @@ import ServiceManagement
 struct SettingsView: View {
     var checkForUpdates: (() -> Void)? = nil
     @ObservedObject private var guard_ = AccessibilityGuard.shared
+    @ObservedObject private var eiKana = EiKanaManager.shared
     @State private var launchAtLogin: Bool = false
 
     var body: some View {
@@ -12,6 +13,8 @@ struct SettingsView: View {
                 .tabItem { Label("一般", systemImage: "gear") }
             shortcutsTab
                 .tabItem { Label("ショートカット", systemImage: "command") }
+            eiKanaTab
+                .tabItem { Label("英かな", systemImage: "character.textbox") }
             aboutTab
                 .tabItem { Label("このアプリ", systemImage: "info.circle") }
         }
@@ -75,6 +78,38 @@ struct SettingsView: View {
             }
             .padding()
         }
+    }
+
+    private var eiKanaTab: some View {
+        Form {
+            Section {
+                Toggle("英かなを有効にする", isOn: $eiKana.enabled)
+            }
+            Section("キー割り当て") {
+                Picker("英数キー", selection: $eiKana.eisuKeyCode) {
+                    ForEach(EiKanaManager.assignableKeys, id: \.keyCode) { key in
+                        Text(key.label).tag(key.keyCode)
+                    }
+                }
+                Picker("かなキー", selection: $eiKana.kanaKeyCode) {
+                    ForEach(EiKanaManager.assignableKeys, id: \.keyCode) { key in
+                        Text(key.label).tag(key.keyCode)
+                    }
+                }
+            }
+            if !guard_.isTrusted {
+                Section("アクセス権") {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                        Text("Accessibility 未許可のため英かな切替が動作しません")
+                        Spacer()
+                        Button("設定を開く") { guard_.openSystemSettings() }
+                    }
+                }
+            }
+        }
+        .formStyle(.grouped)
     }
 
     private var aboutTab: some View {
