@@ -14,6 +14,7 @@ Rectangle / Magnet 相当の機能を、SwiftUI ネイティブで軽量に実�
 ## 機能
 
 - **14種の分割アクション**: 左右半分 / 上下半分 / 4分割 / 横3分割 / 中央寄せ / 最大化 / ほぼ最大化 / 元に戻す
+- **英かな入力切替**: 左⌘の単押しで英数、右⌘の単押しでかなに切替（EiKana 相当）。他キー併用時は通常の⌘として動作。キー割り当ては設定から変更可能
 - **menu bar アイコンから設定を即起動**: クリック一発で全ショートカットの編集&即実行画面へ
 - **ユーザー編集可能なホットキー**: 任意のキーコンビネーションを割り当て、永続化
 - **ログイン時起動**: 設定からトグル
@@ -84,6 +85,18 @@ open dist/QuickSplit.app
 3. QuickSplit のトグルを ON にします
 4. 設定画面の表示が「Accessibility を許可済み」に変われば完了（数秒で自動反映）
 
+## Input Monitoring 権限の付与（英かなを使う場合）
+
+英かな機能は CGEventTap でキー入力を監視するため、Accessibility に加えて
+**入力監視 (Input Monitoring)** の許可も別途必要です（macOS 10.15+）。
+
+1. 設定画面の **英かな** タブを開きます
+2. 「入力監視 (Input Monitoring) 未許可」表示の右にある「設定を開く」ボタンから
+   System Settings → **プライバシーとセキュリティ** → **入力監視** が開きます
+3. QuickSplit のトグルを ON にします
+4. 数秒で自動反映され、Accessibility と合わせて両方許可されると英かなが有効になります
+   （権限を許可した時点で自動的に切替が有効化されるため、アプリの再起動は不要です）
+
 ## 使い方
 
 1. menu bar の `▣` アイコンをクリック → 設定画面が開く
@@ -91,7 +104,8 @@ open dist/QuickSplit.app
 3. 割り当てたキーを押すとフォーカス中のウィンドウが分割される
 4. 行右端の ▶︎ ボタンでその場で実行もできる
 5. 「元に戻す」は直前のフレームへ復元（履歴 20 回まで）
-6. 終了するときは **一般** タブの「QuickSplit を終了」ボタン
+6. **英かな** タブで有効/無効・キー割り当て（既定: 左⌘=英数 / 右⌘=かな）を変更できる
+7. 終了するときは **一般** タブの「QuickSplit を終了」ボタン
 
 ## アーキテクチャ
 
@@ -100,8 +114,11 @@ open dist/QuickSplit.app
   - `WindowAction.swift` — 全分割アクションの enum と表示メタデータ
   - `WindowLayoutCalculator.swift` — スクリーン矩形 → 目標フレーム計算（純粋関数）
   - `WindowManager.swift` — AXUIElement で最前面ウィンドウをリサイズ、履歴管理
-  - `AccessibilityGuard.swift` — AX 権限チェック + 設定誘導
+  - `AccessibilityGuard.swift` — Accessibility / Input Monitoring 権限チェック + 設定誘導
   - `ShortcutRegistry.swift` — [KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) への登録
+  - `EiKanaManager.swift` — CGEventTap で左右修飾キーの単押しを検出し、英数/かな切替イベントを合成 post
+    （[dominion525/cmd-eikana](https://github.com/dominion525/cmd-eikana) の実装を参考に、Accessibility と
+    Input Monitoring 両方の権限確認ロジックを踏襲）
 - **`Sources/QuickSplit/Views/`** — SwiftUI（Settings ウィンドウ。menu bar アイコンは AppKit `NSStatusItem` 実装）
 - **`Resources/Info.plist`** — `LSUIElement=true` で Dock に出さない
 - **`build.sh`** — `swift build` → .app バンドル組み立て（Sparkle.framework 同梱・rpath 設定）→ git タグから marketing version 注入 → 安定した自己署名証明書で署名（証明書が無ければ ad-hoc にフォールバック）
@@ -110,6 +127,11 @@ open dist/QuickSplit.app
 ## 依存
 
 - [sindresorhus/KeyboardShortcuts](https://github.com/sindresorhus/KeyboardShortcuts) (MIT)
+
+## 参考実装
+
+- [dominion525/cmd-eikana](https://github.com/dominion525/cmd-eikana) — 英かな機能の CGEventTap
+  権限確認ロジック（Accessibility + Input Monitoring）の参照元
 
 ## ライセンス
 
