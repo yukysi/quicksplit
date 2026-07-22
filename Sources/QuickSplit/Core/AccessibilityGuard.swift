@@ -30,9 +30,12 @@ final class AccessibilityGuard: ObservableObject {
     }
 
     func openSystemSettings() {
+        // 一度もプロンプトを要求していないと、macOS のアクセシビリティ一覧に
+        // このアプリ自体が登録されずトグルする対象が現れない。先に登録/プロンプトを
+        // 発行してから設定画面を開く。
+        requestTrust()
         let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
         NSWorkspace.shared.open(url)
-        startMonitoring()
     }
 
     private func startMonitoring() {
